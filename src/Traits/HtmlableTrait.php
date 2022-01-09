@@ -16,6 +16,6 @@ trait HtmlableTrait
      */
     public function toHtml()
     {
-        return (string)$this->render();
+        return $this->render();
     }
 }

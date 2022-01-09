@@ -3,6 +3,7 @@
 namespace Maduser\Laravel\Support\Traits;
 
 use Illuminate\Support\HtmlString;
+use Maduser\Laravel\ViewModel\ViewFinder;
 use Throwable;
 
 trait RenderableTrait
@@ -48,8 +49,15 @@ trait RenderableTrait
     {
         $view = $view ?: $this->view;
 
-        return new HtmlString(
-            view($view, [$this->exposedAs => $this])->render()
-        );
+//        return new HtmlString(
+//            view($view, [$this->exposedAs => $this])->render()
+//        );
+
+        $str = ViewFinder::create($this, $view ?: $this->view, $this->exposedAs)
+            ->render(function ($view, $exposedAs) {
+                return view($view, [$exposedAs => $this])->render();
+            }, $view);
+
+        return new HtmlString($str);
     }
 }

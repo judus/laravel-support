@@ -14,7 +14,6 @@ use ReflectionProperty;
  */
 trait CollectableTrait
 {
-
     /**
      * @param ReflectionProperty $property
      *
@@ -22,13 +21,13 @@ trait CollectableTrait
      */
     protected function shouldIgnore(ReflectionProperty $property): bool
     {
-        if (isset($this->ignore)) {
-            if ($property->isPrivate() ||
-                in_array($property->getName(), $this->ignore) ||
-                ($property->isProtected() && !$this->propertyHasGetter($property))
-            ) {
-                return true;
-            }
+        if (
+            $property->isPrivate() ||
+            $property->isStatic() ||
+            isset($this->ignore) && in_array($property->getName(), $this->ignore) ||
+            ($property->isProtected() && !$this->propertyHasGetter($property))
+        ) {
+            return true;
         }
 
         return false;

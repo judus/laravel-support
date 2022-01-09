@@ -16,7 +16,8 @@ trait CallSettersTrait {
      *
      * @return $this
      */
-  public function callSetters(array $items) {
+  public function callSetters(array $items)
+  {
     foreach ($items as $key => $value) {
       $method = 'set' . Str::studly($key);
       if (method_exists($this, $method)) {
