@@ -49,10 +49,6 @@ trait RenderableTrait
     {
         $view = $view ?: $this->view;
 
-//        return new HtmlString(
-//            view($view, [$this->exposedAs => $this])->render()
-//        );
-
         $str = ViewFinder::create($this, $view ?: $this->view, $this->exposedAs)
             ->render(function ($view, $exposedAs) {
                 return view($view, [$exposedAs => $this])->render();

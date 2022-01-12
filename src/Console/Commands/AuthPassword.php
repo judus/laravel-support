@@ -8,8 +8,6 @@ use App\User;
 
 /**
  * Class AuthPassword
- *
- * @package Previon\Auth\Console\Commands
  */
 class AuthPassword extends Command
 {

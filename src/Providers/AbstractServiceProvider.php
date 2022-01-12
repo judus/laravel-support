@@ -161,6 +161,7 @@ abstract class AbstractServiceProvider extends ServiceProvider
             $viewFactory = $this->app['view'];
             $viewFactory->addLocation($directory);
 
+            // TODO: Need to rethink this
 //            $this->loadViewsFrom($directory, $this->viewPrefix());
 //            $hints = config('maduser.support.view.hints');
 //            $hints[$this->viewPrefix()] = ['priority' => $this->viewPriority()];

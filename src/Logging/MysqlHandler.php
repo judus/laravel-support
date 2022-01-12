@@ -53,7 +53,6 @@ class MysqlHandler extends AbstractProcessingHandler
                 'level' => $record['level'],
                 'level_name' => $record['level_name'],
                 'context' => json_encode($record['context']),
-                //'remote_addr' => isset($_SERVER['REMOTE_ADDR']) ? ip2long($_SERVER['REMOTE_ADDR']) : null,
                 'remote_addr' => request()->ip(),
                 'user_agent' => request()->userAgent(),
                 'created_by' => Auth::id() > 0 ? Auth::id() : null,
